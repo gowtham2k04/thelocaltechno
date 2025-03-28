@@ -1,0 +1,1131 @@
+
+body {
+    background: linear-gradient(135deg, #7c704c, #6b6143);
+}
+
+/* General Reset */
+* {
+    margin: 0;
+    padding: 0; 
+    box-sizing: border-box;
+    font-family: Arial, sans-serif;
+    
+}
+
+/* 🏗️ Navbar Styling */
+.navbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 15px 30px;
+    position: fixed;
+    width: 100%;
+    top: 0;
+    left: 0;
+    background: transparent; /* Initially transparent */
+    transition: background 0.3s ease-in-out, padding 0.3s ease-in-out;
+    z-index: 1000;
+}
+
+/* 🌐 Navbar Scroll Effect */
+.navbar.scrolled {
+    background: rgba(30, 30, 46, 0.95);
+    padding: 10px 30px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+}
+
+/* 🌐 Desktop View */
+.nav-links {
+    display: flex;
+    list-style: none;
+}
+
+.nav-links li {
+    margin: 0 15px;
+}
+
+.nav-links a {
+    text-decoration: none;
+    color: white;
+    font-size: 18px;
+    position: relative;
+    transition: color 0.3s ease-in-out;
+}
+
+/* 🌟 Animated Hover Effect */
+.nav-links a::before {
+    content: "";
+    position: absolute;
+    width: 100%;
+    height: 3px;
+    bottom: -5px;
+    left: 0;
+    background-color: #fffffe;
+    transform: scaleX(0);
+    transition: transform 0.3s ease-in-out;
+}
+
+.nav-links a:hover {
+    color: #000000;
+}
+
+.nav-links a:hover::before {
+    transform: scaleX(1);
+}
+
+/* 📱 Mobile View */
+.menu-toggle {
+    font-size: 28px;
+    cursor: pointer;
+    display: none;
+    color: white;
+    transition: transform 0.3s ease-in-out;
+}
+
+/* 📱 Mobile Menu */
+@media (max-width: 768px) {
+    .menu-toggle {
+        display: block; /* Show hamburger icon */
+    }
+
+    .nav-links {
+        display: none; /* Initially hide nav links */
+        flex-direction: column;
+        background: rgb(161, 168, 95);
+        position: absolute;
+        top: 60px;
+        left: 0;
+        width: 100%;
+        padding: 20px;
+        text-align: center;
+        transition: transform 0.3s ease-in-out;
+        transform: translateY(-100%);
+    }
+
+    .nav-links.active {
+        display: flex;
+        transform: translateY(0);
+    }
+
+    .nav-links li {
+        margin: 10px 0;
+    }
+}
+
+/* 🔄 Animated Icon Rotation */
+.menu-toggle.active {
+    transform: rotate(90deg);
+}
+
+/* Home Section */
+.home-section {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    background-color: #A1BE95;
+    padding: 100px 10%;
+    height: 100vh;
+}
+
+/* Text Content */
+.content {
+    flex: 1;
+    max-width: 50%;
+    text-align: left;
+}
+
+/* Home Section Text Animation */
+h1 {
+    font-size: 4rem;
+    opacity: 0;
+    transform: translateX(-50px);
+    animation: fadeInLeft 1s ease-out forwards;
+    cursor: pointer; /* Make text clickable */
+    transition: color 0.5s ease-in-out, text-shadow 0.5s ease-in-out;
+}
+
+p {
+    font-size: 1.5rem;
+    line-height: 1.6;
+    opacity: 0;
+    transform: translateX(50px);
+    animation: fadeInRight 2s ease-out forwards;
+    animation-delay: 0.7s;
+    cursor: pointer; /* Make text clickable */
+    transition: color 0.5s ease-in-out, text-shadow 0.5s ease-in-out;
+}
+
+/* Hover Effect */
+h1:hover, p:hover {
+    text-shadow: 0 0 10px #ff00ea, 0 0 20px #ff00f2, 0 0 40px rgb(255, 3, 234);
+}
+
+/* Keyframe Animations */
+@keyframes fadeInLeft {
+    0% {
+        opacity: 0;
+        transform: translateX(-50px);
+    }
+    100% {
+        opacity: 1;
+        transform: translateX(0);
+    }
+}
+
+@keyframes fadeInRight {
+    0% {
+        opacity: 0;
+        transform: translateX(50px);
+    }
+    100% {
+        opacity: 1;
+        transform: translateX(0);
+    }
+}
+
+/* Image Container */
+.image-container {
+    flex: 1;
+    display: flex;
+    justify-content: center;
+    perspective: 1200px; /* Adds 3D Depth */
+}
+
+/* Home Image Base Style */
+.home-image {
+    max-width: 80%;
+    border-radius: 10px;
+    transition: transform 0.8s ease-in-out, box-shadow 0.5s ease-in-out;
+    cursor: pointer;
+    transform-style: preserve-3d;
+    box-shadow: 0 10px 30px rgba(255, 255, 255, 0.4);
+}
+
+/* ✨ Click Rotation Effect + Reflection */
+.home-image.clicked {
+    transform: rotateY(360deg);
+    box-shadow: 0 0 50px rgba(255, 255, 0, 0.8), 
+                0 0 80px rgba(0, 255, 255, 0.7); /* Reflection Effect */
+}
+
+/* Buttons */
+.btn {
+    display: inline-block;
+    padding: 12px 25px;
+    font-size: 18px;
+    font-weight: bold;
+    color: white;
+    background: linear-gradient(45deg, #07331b, #3e9462);
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: transform 0.3s ease, background 0.3s ease;
+    box-shadow: 0 5px 15px rgba(255, 255, 255, 0.3);
+}
+
+/* Button Hover Effect */
+.btn:hover {
+    transform: scale(1.1);
+    background: linear-gradient(45deg, #0c2920, #3f9e77);
+}
+
+/* Button Click Effect */
+.btn:active {
+    transform: scale(0.95);
+}
+
+/* Scroll Animation */
+.hidden {
+    opacity: 0;
+    transform: translateY(50px);
+    transition: opacity 0.8s ease-out, transform 0.8s ease-out;
+}
+
+.show {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+
+
+/* 📱 Mobile View: Image on Top, Content Below */
+@media (max-width: 768px) {
+    .home-section {
+        flex-direction: column;
+        text-align: center;
+        height: auto;
+        padding: 50px 5%;
+    }
+
+    /* Image should appear on top */
+    .image-container {
+        order: -1; /* Moves image to the top */
+        width: 100%;
+    }
+
+    .home-image {
+        max-width: 100%; /* Full-width image */
+    }
+
+    /* Content Below Image */
+    .content {
+        max-width: 100%;
+        order: 1; /* Ensures content is below image */
+    }
+
+    h1 {
+        font-size: 3rem;
+    }
+
+    p {
+        font-size: 1.2rem;
+    }
+
+    /* Button at the bottom */
+    .btn {
+        font-size: 16px;
+        padding: 10px 20px;
+        display: block;
+        margin: 20px auto; /* Center button */
+    }
+}
+
+
+/* About Section Styling */
+.about-container {
+    text-align: center;
+    padding: 80px 10%;
+    background: linear-gradient(135deg, #52482c, #b3a16e);
+    color: white;
+    position: relative;
+}
+
+.about-content h1 {
+    font-size: 36px;
+    margin-bottom: 20px;
+}
+
+.about-content p {
+    font-size: 18px;
+    max-width: 800px;
+    margin: 0 auto 30px;
+}
+
+/* Main Cards */
+.main-card {
+    display: inline-block;
+    background: linear-gradient(45deg, #52482c, #b3a16e);
+    color: white;
+    padding: 15px 30px;
+    font-size: 20px;
+    font-weight: bold;
+    border-radius: 10px;
+    cursor: pointer;
+    margin: 20px;
+    transition: 0.3s;
+    box-shadow: 0 5px 15px rgba(255, 81, 47, 0.3);
+}
+
+.main-card:hover {
+    transform: scale(1.1);
+    background: linear-gradient(45deg, #52482c, #b3a16e);
+}
+
+/* Overlay for Closing */
+.overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 90vh;
+    background: rgba(0, 0, 0, 0.6);
+    display: none;
+    z-index: 998;
+}
+
+/* Sub Cards Popup */
+.sub-cards-container {
+    position: fixed;
+    top: 50%;;
+    left: 50%;
+    transform: translate(-50%, -50%) scale(0);
+    width: 50%;
+    max-width: 400px;
+    background: #f7f7f7;
+    padding: 30px;
+    border-radius: 15px;
+    text-align: center;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+    transition: transform 0.3s ease-out;
+    z-index: 999;
+}
+.sub-cards-container {
+    overflow-y: auto; /* Enable scrolling inside sub-card */
+    max-height: 70vh; /* Prevent from overflowing the screen */
+}
+
+.sub-cards-container.active {
+    transform: translate(-50%, -50%) scale(1);
+}
+
+.sub-cards {
+    display: none;
+}
+
+.sub-cards.active {
+    display: block;
+}
+
+.sub-card {
+    background: linear-gradient(45deg,#52482c, #b3a16e);    
+    padding: 10px;
+    margin: 10px ;
+    height:220px;
+    border-radius: 8px;
+    color: white;
+    font-size: 18px;
+    box-shadow: 0 5px 15px rgb(0, 0, 0);
+}
+
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .about-content h1 {
+        font-size: 28px;
+    }
+
+    .about-content p {
+        font-size: 16px;
+    }
+
+    .main-card {
+        font-size: 18px;
+        padding: 12px 25px;
+    }
+
+    .sub-cards-container {
+        width: 95%;
+        max-width: 500px;
+        padding: 20px;
+    }
+
+    .sub-card {
+        font-size: 16px;
+    }
+}
+
+/* 🎨 Why Choose Us Section */
+.why-container {
+    text-align: center;
+    padding: 100px 10%;
+    background: linear-gradient(135deg, #0f0f0f, #1a1a2e);
+    color: white;
+    position: relative;
+    overflow: hidden;
+}
+
+/* 🌟 Section Title */
+.section-title {
+    font-size: 42px;
+    font-weight: bold;
+    background: linear-gradient(90deg, #ff00ff, #00ffff);
+    -webkit-background-clip: text;
+    color: transparent;
+    margin-bottom: 20px;
+    opacity: 1;
+    transform: translateY(30px);
+    animation: fadeInUp 1.2s ease-out forwards;
+}
+
+/* 📖 Section Description */
+.section-description {
+    font-size: 20px;
+    max-width: 750px;
+    margin: 0 auto 40px;
+    color: rgba(255, 255, 255, 0.8);
+    opacity: 0;
+    transform: translateY(30px);
+    animation: fadeInUp 1.2s 0.5s ease-out forwards;
+}
+
+/* 🌐 Cards Grid */
+.why-grid {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 40px;
+}
+
+/* 🏗️ 3D Scroll Effect Card */
+.why-card {
+    width: 320px;
+    background: rgba(255, 255, 255, 0.05);
+    border-radius: 15px;
+    padding: 30px;
+    text-align: center;
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+    transition: transform 0.5s ease, box-shadow 0.3s ease;
+    position: relative;
+    overflow: hidden;
+    cursor: pointer;
+    opacity: 1;
+    transform: translateY(50px) rotateY(15deg) scale(0.9);
+}
+
+/* 🖼️ Card Image */
+.why-card img {
+    width: 80px;
+    height: 80px;
+    margin-bottom: 15px;
+    transition: transform 0.5s ease-in-out;
+}
+
+/* 📖 Card Title */
+.why-card h3 {
+    font-size: 22px;
+    margin-bottom: 10px;
+    color: #ffffff;
+    transition: transform 0.5s ease-in-out;
+}
+
+/* 📜 Card Description */
+.why-card p {
+    font-size: 16px;
+    color: rgba(255, 255, 255, 0.8);
+    transition: transform 0.5s ease-in-out;
+}
+
+/* 🔼 Move Content to the Top on Click */
+.why-card.active img {
+    transform: translateY(-60px);
+}
+
+.why-card.active h3 {
+    transform: translateY(-40px);
+}
+
+.why-card.active p {
+    transform: translateY(-20px);
+}
+
+/* 🖱️ Hover Effect */
+.why-card:hover {
+    transform: scale(1.05) rotateY(0);
+    box-shadow: 0 15px 25px rgba(0, 255, 255, 0.3);
+}
+
+/* 🌪️ Scroll Effect (Makes the Card Appear with 3D Tilt) */
+.show-card {
+    opacity: 1 !important;
+    transform: translateY(0) rotateY(0) scale(1) !important;
+    transition: transform 1s ease-out, opacity 1s ease-out;
+}
+
+/* 🏗️ 3D Scroll Effect Card */
+.why-card {
+    width: 320px;
+    background: rgba(255, 255, 255, 0.05);
+    border-radius: 15px;
+    padding: 30px;
+    text-align: center;
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+    transition: transform 0.5s ease, box-shadow 0.3s ease, background 0.5s ease-in-out;
+    position: relative;
+    overflow: hidden;
+    cursor: pointer;
+    opacity: 1;
+    transform: translateY(50px) rotateY(15deg) scale(0.9);
+}
+
+/* 🎨 Click Effect - Change Background */
+.why-card.active {
+    background: linear-gradient(135deg, #ff00ff, #00ffff);
+    box-shadow: 0 15px 25px rgba(255, 0, 255, 0.3);
+    transform: scale(1.05) rotateY(0);
+}
+
+/* 🖼️ Image Effect on Click */
+.why-card.active img {
+    transform: translateY(-60px) scale(1.2);
+    filter: brightness(1.2);
+}
+
+/* 📖 Title Effect on Click */
+.why-card.active h3 {
+    transform: translateY(-40px);
+    color: #ffffff;
+}
+
+/* 📜 Description Effect on Click */
+.why-card.active p {
+    transform: translateY(-20px);
+    color: rgba(255, 255, 255, 0.9);
+}
+
+/* ✨ Smooth Fade In Animation */
+@keyframes fadeInUp {
+    0% { opacity: 0; transform: translateY(30px); }
+    100% { opacity: 1; transform: translateY(0); }
+}
+
+/* 📱 Responsive */
+@media (max-width: 768px) {
+    .section-title {
+        font-size: 34px;
+    }
+
+    .section-description {
+        font-size: 16px;
+    }
+
+    .why-grid {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .why-card {
+        width: 90%;
+        max-width: 350px;
+    }
+}
+
+
+/* 🎨 Services Section */
+.services-container {
+    text-align: center;
+    padding: 100px 10%;
+    background: linear-gradient(135deg, #0f0f0f, #1e1e2e);
+    color: white;
+    position: relative;
+    overflow: hidden;
+}
+
+/* 🌟 Section Title & Description */
+.section-title {
+    font-size: 42px;
+    font-weight: bold;
+    background: linear-gradient(90deg, #9b6b9b, #00ffff);
+    -webkit-background-clip: text;
+    color: transparent;
+    margin-bottom: 20px;
+    opacity: 1;
+    transform: translateY(30px);
+    transition: opacity 1s ease-out, transform 1s ease-out;
+}
+
+.section-description {
+    font-size: 20px;
+    max-width: 850px;
+    margin: 0 auto 50px;
+    opacity: 0;
+    transform: translateY(30px);
+    transition: opacity 1s ease-out, transform 1s ease-out;
+    color: rgba(255, 255, 255, 0.8);
+}
+
+/* 🌐 Service Grid */
+.services-grid {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 40px;
+}
+
+/* 🏗️ 3D Service Cards */
+.service-card {
+    width: 320px;
+    height: 420px;
+    position: relative;
+    transform-style: preserve-3d;
+    perspective: 1500px;
+    cursor: pointer;
+    opacity: 1;
+    transform: translateY(30px);
+    transition: opacity 1s ease-out, transform 1s ease-out;
+}
+
+/* 🌀 Card Animation - 3D Flip on Hover */
+.service-card:hover .card-inner {
+    transform: rotateY(180deg);
+}
+
+/* 🎭 Inner Card */
+.card-inner {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    transform-style: preserve-3d;
+    transition: transform 0.8s ease-in-out;
+}
+
+/* 🔥 Card Front & Back */
+.card-front, .card-back {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    backface-visibility: hidden;
+    border-radius: 15px;
+    box-shadow: 0 15px 40px rgba(0, 255, 255, 0.2);
+    text-align: center;
+    padding: 40px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    transition: transform 0.5s ease;
+}
+
+/* ✨ Front Design */
+.card-front {
+    background: rgba(255, 255, 255, 0.1);
+    color: white;
+    border: 2px solid rgba(255, 255, 255, 0.2);
+    backdrop-filter: blur(10px);
+}
+
+/* 🖼️ Front Image */
+.card-front img {
+    width: 120px;
+    height: 120px;
+    margin-bottom: 20px;
+    transition: transform 0.3s ease-in-out;
+}
+
+.service-card:hover .card-front img {
+    transform: scale(1.1);
+}
+
+/* 📖 Back Design */
+.card-back {
+    transform: rotateY(180deg);
+    background: linear-gradient(135deg, #ff00ff, #00ffff);
+    color: #1e1e2e;
+    font-size: 18px;
+    padding: 35px;
+    border: none;
+    box-shadow: 0 10px 30px rgba(255, 255, 255, 0.5);
+}
+
+/* 💡 Floating Hover Effect */
+.service-card:hover {
+    transform: translateY(-10px);
+    transition: transform 0.5s ease-in-out;
+}
+
+/* 🎭 Button for Services */
+.service-btn-container {
+    margin-top: 60px;
+}
+
+.view-services-btn {
+    background: linear-gradient(90deg,  #0f0f0f, #2e2e30);
+    color: white;
+    border: none;
+    padding: 18px 32px;
+    font-size: 22px;
+    cursor: pointer;
+    border-radius: 15px;
+    transition: all 0.4s ease;
+    box-shadow: 0 5px 20px rgba(0, 255, 255, 0.5);
+    font-weight: bold;
+}
+
+.view-services-btn:hover {
+    transform: scale(1.1);
+    box-shadow: 0 5px 30px rgba(0, 238, 255, 0.623);
+}
+
+/* ✨ Glowing Animated Particles */
+@keyframes glow {
+    0% { transform: translateY(0px); opacity: 0.6; }
+    50% { transform: translateY(-15px); opacity: 1; }
+    100% { transform: translateY(0px); opacity: 0.6; }
+}
+
+.animated-glow {
+    position: absolute;
+    width: 50px;
+    height: 50px;
+    background: rgba(255, 255, 255, 0.2);
+    border-radius: 50%;
+    animation: glow 3s infinite ease-in-out alternate;
+}
+
+.animated-glow:nth-child(1) {
+    top: 10%;
+    left: 15%;
+}
+
+.animated-glow:nth-child(2) {
+    bottom: 15%;
+    right: 10%;
+}
+
+.animated-glow:nth-child(3) {
+    top: 50%;
+    left: 80%;
+}
+
+/* 📱 Responsive */
+@media (max-width: 768px) {
+    .section-title {
+        font-size: 34px;
+    }
+
+    .section-description {
+        font-size: 16px;
+    }
+
+    .services-grid {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .service-card {
+        max-width: 100%;
+    }
+
+    .view-services-btn {
+        font-size: 18px;
+        padding: 14px 28px;
+    }
+}
+
+/* 🌍 Footer Section */
+footer {
+    background: linear-gradient(135deg, #0f0f0f, #1a1a2e);
+    color: white;
+    padding: 60px 10%;
+    text-align: center;
+}
+
+/* 📌 Footer Container */
+.footer-container {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 40px;
+    text-align: left;
+    align-items: start;
+}
+
+/* 📌 Footer Logo */
+.footer-logo {
+    text-align: center;
+}
+
+.footer-logo img {
+    width: 150px;
+    height: auto;
+    margin-bottom: 10px;
+    transition: transform 0.5s ease-in-out;
+    animation: glowEffect 2.5s infinite alternate ease-in-out;
+}
+
+@keyframes glowEffect {
+    0% {
+        filter: drop-shadow(0 0 5px rgba(255, 255, 255, 0.5));
+    }
+    100% {
+        filter: drop-shadow(0 0 15px rgb(255, 255, 255));
+    }
+}
+
+/* 📌 Footer Columns */
+.footer-links, .footer-contact, .footer-social, .footer-legal {
+    opacity: 1;
+    transform: translateY(30px);
+    transition: opacity 0.8s ease-out, transform 0.8s ease-out;
+}
+
+/* 📌 Titles */
+.footer-links h3, .footer-contact h3, .footer-social h3, .footer-legal h3 {
+    font-size: 18px;
+    margin-bottom: 15px;
+    color: #ffcc00;
+    text-transform: uppercase;
+}
+
+/* 📌 Footer Lists */
+.footer-links ul, .footer-legal ul {
+    list-style: none;
+    padding: 0;
+}
+
+.footer-links ul li, .footer-legal ul li {
+    margin: 8px 0;
+}
+
+.footer-links ul li a, .footer-legal ul li a {
+    text-decoration: none;
+    font-size: 14px;
+    color: rgba(255, 255, 255, 0.7);
+    transition: color 0.3s ease;
+}
+
+.footer-links ul li a:hover, .footer-legal ul li a:hover {
+    color: #ffcc00;
+}
+
+/* 📌 Contact Info */
+.footer-contact p {
+    font-size: 14px;
+    margin: 5px 0;
+}
+
+.footer-contact i {
+    color: #ffcc00;
+    margin-right: 8px;
+}
+
+.footer-contact a {
+    color: #ffcc00;
+    text-decoration: none;
+}
+
+.footer-contact a:hover {
+    text-decoration: underline;
+}
+
+/* 📌 Social Media */
+.footer-social a {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    color: white;
+    font-size: 16px;
+    text-decoration: none;
+    margin-bottom: 8px;
+    transition: transform 0.3s ease, color 0.3s ease;
+}
+
+.footer-social a i {
+    font-size: 20px;
+    transition: transform 0.3s ease;
+}
+
+.footer-social a:hover {
+    color: #ffcc00;
+    transform: scale(1.1);
+}
+
+.footer-social a:hover i {
+    transform: rotate(10deg);
+}
+
+/* 📌 Copyright Section */
+.footer-bottom {
+    text-align: center;
+    padding-top: 20px;
+    border-top: 1px solid rgba(255, 255, 255, 0.2);
+    margin-top: 40px;
+    font-size: 14px;
+}
+.footer-bottom a {
+    color: #ffcc00;
+    text-decoration: none;
+}
+.footer-bottom a:hover {
+    text-decoration: underline;
+}
+
+/* 🌟 Responsive Footer */
+@media (max-width: 768px) {
+    .footer-container {
+        grid-template-columns: 1fr;
+        text-align: center;
+    }
+
+    .footer-links, .footer-contact, .footer-social, .footer-legal {
+        text-align: center;
+    }
+
+    .footer-social a {
+        justify-content: center;
+    }
+}
+
+/* 🌟 Chat Icon (Floating Button) */
+.chat-icon {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    width: 60px;
+    height: 60px;
+    background: linear-gradient(135deg, #edeef1, #091e7a);
+    color: white;
+    font-size: 28px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 50%;
+    cursor: pointer;
+    box-shadow: 0 5px 15px rgba(27, 27, 27, 0.5);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    animation: floatEffect 3s infinite ease-in-out;
+}
+
+/* 🔥 Hover Effect */
+.chat-icon:hover {
+    transform: scale(1.1);
+    box-shadow: 0 8px 20px rgba(224, 223, 220, 0.7);
+}
+
+/* 💡 Floating Animation */
+@keyframes floatEffect {
+    0% { transform: translateY(0); }
+    50% { transform: translateY(-5px); }
+    100% { transform: translateY(0); }
+}
+
+/* 🌐 Chatbot Container */
+.chatbot-container {
+    position: fixed;
+    bottom: 80px;
+    right: 20px;
+    width: 350px;
+    max-width: 90%;
+    background: rgba(255, 255, 255, 0.1);
+    backdrop-filter: blur(10px);
+    border-radius: 12px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+    display: none;
+    flex-direction: column;
+    overflow: hidden;
+    animation: slideUp 0.4s ease-out;
+}
+
+/* 🎭 Slide Animation */
+@keyframes slideUp {
+    from { transform: translateY(20px); opacity: 0; }
+    to { transform: translateY(0); opacity: 1; }
+}
+
+/* 🔵 Chat Header */
+.chat-header {
+    background: linear-gradient(135deg, #33836b, #11d4aa);
+    color: white;
+    padding: 15px;
+    font-size: 18px;
+    font-weight: bold;
+    text-align: center;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+/* ❌ Close Button */
+.close-chat {
+    cursor: pointer;
+    font-size: 18px;
+    transition: color 0.3s;
+}
+
+.close-chat:hover {
+    color: #f3f1f0;
+}
+
+/* 💬 Chat Body */
+.chat-body {
+    max-height: 300px;
+    overflow-y: auto;
+    padding: 15px;
+    background: rgba(255, 255, 255, 0.05);
+}
+
+/* ✨ AI & User Message Styling */
+.bot-message, .user-message {
+    padding: 10px;
+    margin: 8px 0;
+    border-radius: 10px;
+    max-width: 80%;
+    font-size: 16px;
+    word-wrap: break-word;
+}
+
+/* 🔥 AI Message */
+.bot-message {
+    background: linear-gradient(135deg, #ffffff, #ffffff);
+    color: black;
+    align-self: flex-start;
+    display: inline-block;
+    animation: fadeIn 0.5s ease-in;
+}
+
+/* 🎭 User Message */
+.user-message {
+    background: linear-gradient(135deg, #fbfcfc, #807f7e);
+    color: rgb(0, 0, 0);
+    align-self: flex-end;
+    display: inline-block;
+    animation: fadeIn 0.5s ease-in;
+}
+
+/* 🎭 Fade-in Animation */
+@keyframes fadeIn {
+    from { opacity: 0; transform: translateY(5px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+/* 🔤 Typing Animation */
+.typing-animation::after {
+    content: "...";
+    animation: typingDots 1s infinite;
+}
+
+@keyframes typingDots {
+    0% { content: "."; }
+    33% { content: ".."; }
+    66% { content: "..."; }
+}
+
+/* ⌨️ Chat Input */
+.chat-input {
+    display: flex;
+    padding: 10px;
+    background: rgba(255, 255, 255, 0.1);
+}
+
+.chat-input input {
+    flex: 1;
+    padding: 10px;
+    border: none;
+    font-size: 16px;
+    outline: none;
+    background: rgba(255, 255, 255, 0.2);
+    color: rgb(0, 0, 0);
+    border-radius: 5px;
+}
+
+.chat-input button {
+    background: linear-gradient(135deg, #011d09, #062b08);
+    border: none;
+    color: white;
+    padding: 10px;
+    cursor: pointer;
+    font-size: 16px;
+    border-radius: 5px;
+    margin-left: 5px;
+    transition: transform 0.2s ease-in-out;
+}
+
+/* 🔥 Button Hover Effect */
+.chat-input button:hover {
+    transform: scale(1.1);
+    background: linear-gradient(135deg, #ff2200, #ff5500);
+}
+
+/* 📱 Mobile Responsiveness */
+@media (max-width: 500px) {
+    .chatbot-container {
+        width: 95%;
+        right: 10px;
+        bottom: 60px;
+    }
+}
+
+
+
+
+
